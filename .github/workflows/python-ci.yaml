@@ -36,7 +36,7 @@ jobs:
         id: settings-parser
         uses: christian-ci/action-yaml-github-output@v2
         with:
-          file_path: './${{ inputs.settings-file }}'
+          file_path: ${{ inputs.settings-file }}
 
       - name: Set up Python 
         uses: actions/setup-python@v5
@@ -75,7 +75,7 @@ jobs:
         id: settings-parser
         uses: christian-ci/action-yaml-github-output@v2
         with:
-          file_path: './${{ inputs.settings-file }}'
+          file_path: ${{ inputs.settings-file }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3

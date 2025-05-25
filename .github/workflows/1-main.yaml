@@ -1,9 +1,8 @@
-name: feature / fix branch
+name: main branch
 on:
   push:
     branches:
-      - 'feature/**'
-      - 'fix/**'
+      - 'main'
 
 jobs:
   python-ci:
