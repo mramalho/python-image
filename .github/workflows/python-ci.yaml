@@ -5,7 +5,7 @@ permissions:
   contents: write
   actions: write
   pull-requests: write
-  package: read
+  packages: read
 
 on:
   workflow_call:
@@ -20,7 +20,7 @@ on:
         required: false
         type: string
         default: '.'        
-      runs_on:
+      runs-on:
         description: 'Runner label to use'
         required: false
         type: string
@@ -28,7 +28,7 @@ on:
 
 jobs:
   ci-image:
-    runs_on: ${{ inputs.runs-on }}
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: actions/checkout@v4
 
