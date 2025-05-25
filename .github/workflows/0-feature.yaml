@@ -7,6 +7,6 @@ on:
 
 jobs:
   python-ci:
-    uses: ./github/workflows/python-ci.yaml
+    uses: ./.github/workflows/python-ci.yaml
     secrets: inherit
     
