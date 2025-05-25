@@ -24,8 +24,8 @@ def handle_campeonatos():
         return jsonify(campeonatos)
     elif request.method == 'POST':
         campeonato = request.json
-        campeonatos.append(campeonatos)
-        return jsonify({'message': 'Campeonato adicionado com sucesso!'}), 404
+        campeonatos.append(campeonato)
+        return jsonify({'message': 'Campeonato adicionado com sucesso!'}), 200
 
 @app.errorhandler(404)
 def page_not_found(e):
