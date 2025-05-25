@@ -29,7 +29,7 @@ def handle_campeonatos():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return jsonify({'error': 'Pagina nao encontrada!'})
+    return jsonify({'error': 'Pagina nao encontrada!'}), 404
 
 if __name__ == '__main__':
     app.run(debug=False, host="0.0.0.0", port='9000')
