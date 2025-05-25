@@ -1,0 +1,6 @@
+name: feature / fix branch
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - 'fix/**'
