@@ -48,15 +48,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install --no-cache -r ${{  steps.settings-parser.outputs.dependencies-path }}
 
-      - name: Liting
+      - name: Linting
         run: | 
-          python install pylint
+          pip install pylint
           pylint --errors-only src/*.py
       
       - name: Pytest
         run: | 
           pip install pytest
-          pytest .src 
+          pytest --junitxml=test-results.xml src/
   
       - name: Upload pytest test results
         uses: actions/upload-artifact@v4
