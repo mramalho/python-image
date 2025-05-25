@@ -1,0 +1,3 @@
+registry: 'mramalho'
+repository: 'fullcycle/pos-tech/'
+dependencies-path: 'src/requirements.txt'
