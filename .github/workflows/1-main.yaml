@@ -4,3 +4,9 @@ on:
     branches:
       - 'feature/**'
       - 'fix/**'
+
+jobs:
+  python-ci:
+    uses: ./.github/workflows/python-ci.yaml
+    secrets: inherit
+    
