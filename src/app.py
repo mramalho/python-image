@@ -16,7 +16,7 @@ def handle_times():
     elif request.method == 'POST':
         time = request.json
         times.append(time)
-        return jsonify({'message': 'Time adicionado com sucesso!'})
+        return jsonify({'message': 'Time adicionado com sucesso!'}), 200
 
 @app.route("/campeonatos", methods=["GET","POST"])
 def handle_campeonatos():
