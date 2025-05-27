@@ -97,5 +97,16 @@ jobs:
             ghcr.io/${{ github.repository }}:${{ github.sha }}
             ghcr.io/${{ github.repository }}:latest
 
+  create-pr:
+    name: Create PR to Main
+    runs-on: ${{ inputs.runs-on }}
+    needs: 
+      - ci-image
+    steps:
+      - uses: actions/checkout@v4
 
-
+      - name: Create PR
+        uses: vsoch/pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PULL_REQUEST_BRANCH: "main"
