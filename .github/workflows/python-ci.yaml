@@ -101,7 +101,7 @@ jobs:
     name: Create PR to Main
     runs-on: ${{ inputs.runs-on }}
     needs: 
-      - ci-image
+      - build-and-push
     steps:
       - uses: actions/checkout@v4
 

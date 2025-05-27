@@ -50,6 +50,12 @@ jobs:
         with:
           file_path: ${{ inputs.settings-file }}
       
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1
         env:
