@@ -7,7 +7,7 @@ campeonatos = []
 
 @app.route('/')
 def index():
-    return "Seja bem vindo!!!"
+    return "Seja bem vindo!!!!"
 
 @app.route("/times", methods=["GET","POST"])
 def handle_times():
