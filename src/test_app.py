@@ -14,7 +14,7 @@ class TestApp(unittest.TestCase):
     def test_index(self):
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data.decode('utf-8'), " Seja bem vindo!!!")
+        self.assertEqual(response.data.decode('utf-8'), "Seja bem vindo!!!")
 
     def test_get_times_empty(self):
         response = self.app.get('/times')
