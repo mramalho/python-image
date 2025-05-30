@@ -15,11 +15,16 @@ Este projeto é uma API REST desenvolvida em Python com Flask para gerenciar tim
 - Flask 3.0.3
 - Werkzeug 3.0.3
 - Docker
+- GitHub Actions (CI/CD)
+- SonarCloud (Análise de Código)
 
 ## Estrutura do Projeto
 
 ```
 .
+├── .github/
+│   └── workflows/
+│       └── publish.yml
 ├── Dockerfile
 ├── requirements.txt
 ├── settings.yml
@@ -81,6 +86,14 @@ Este projeto é uma API REST desenvolvida em Python com Flask para gerenciar tim
 
 A API estará disponível em `http://localhost:9000`
 
+### Usando Imagem Docker Publicada
+
+A imagem Docker está disponível no DockerHub. Para executá-la:
+
+```bash
+docker run -p 9000:9000 mramalho/python-image:latest
+```
+
 ### Localmente
 
 1. Instale as dependências:
@@ -103,9 +116,22 @@ O projeto inclui testes automatizados usando `unittest`. Para executar os testes
 python -m unittest src/test_app.py
 ```
 
+## CI/CD e Qualidade de Código
+
+O projeto utiliza GitHub Actions para automação de CI/CD e SonarCloud para análise de qualidade de código. O workflow de publicação (`publish.yml`) realiza as seguintes ações:
+
+1. Validação dos arquivos de configuração
+2. Análise de código com SonarCloud
+3. Construção e publicação da imagem Docker no DockerHub
+
+A imagem Docker é publicada com duas tags:
+- `latest`: Última versão estável
+- `{commit-sha}`: Versão específica do commit
+
 ## Observações
 
 - O armazenamento é feito em memória (os dados são perdidos ao reiniciar a aplicação).
 - A API está configurada para rodar na porta 9000.
 - O modo debug está desativado por padrão.
-- O arquivo `settings.yml` e `sonar-project.properties` são usados para configurações de CI/CD e análise estática, respectivamente. 
+- O arquivo `settings.yml` contém configurações para o registro Docker e nome do repositório.
+- O arquivo `sonar-project.properties` é usado para configurações da análise estática com SonarCloud. 
