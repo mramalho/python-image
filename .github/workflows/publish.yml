@@ -52,21 +52,18 @@ jobs:
         with:
           file_path: ${{ inputs.settings-file }}
 
-      - name: Install Safety
-        run: pip install safety
-
-      - name: Run Safety Scan
-        run: |
-          mkdir -p reports
-          safety scan -r requirements.txt --output html > reports/safety-report.txt
-        env:
-          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
+      - name: Run Safety CLI to check for vulnerabilities
+        uses: pyupio/safety-action@v1
+        with:
+          api-key: ${{ secrets.SAFETY_API_KEY }}
+          output-format: html
+          args: --detailed-output
 
       - name: Upload Safety Report
         uses: actions/upload-artifact@v4
         with:
           name: safety-report
-          path: reports/safety-report.txt
+          path: safety-report.html
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
