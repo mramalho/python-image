@@ -56,7 +56,9 @@ jobs:
         run: pip install safety
 
       - name: Run Safety Check
-        run: safety check -r requirements.txt --output text > reports/safety-report.txt
+        run: |
+          mkdir -p reports
+          safety check -r requirements.txt --output text > reports/safety-report.txt
 
       - name: Upload Safety Report
         uses: actions/upload-artifact@v4
