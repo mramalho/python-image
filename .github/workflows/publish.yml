@@ -55,10 +55,12 @@ jobs:
       - name: Install Safety
         run: pip install safety
 
-      - name: Run Safety Check
+      - name: Run Safety Scan
         run: |
           mkdir -p reports
-          safety check -r requirements.txt --output text > reports/safety-report.txt
+          safety scan -r requirements.txt --output text > reports/safety-report.txt
+        env:
+          SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
 
       - name: Upload Safety Report
         uses: actions/upload-artifact@v4
