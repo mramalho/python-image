@@ -63,7 +63,7 @@ jobs:
             --failOnCVSS 7
             --enableRetired
             --suppression suppression.xml
-            --scan src/
+            --scan .
             --failOnCVSS 7
 
       - name: Upload Dependency-Check Report
