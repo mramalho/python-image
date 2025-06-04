@@ -58,7 +58,7 @@ jobs:
       - name: Run Safety Scan
         run: |
           mkdir -p reports
-          safety scan -r requirements.txt --output screen > reports/safety-report.txt
+          safety scan -r requirements.txt --output html > reports/safety-report.txt
         env:
           SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
 
