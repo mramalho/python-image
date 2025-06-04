@@ -52,25 +52,17 @@ jobs:
         with:
           file_path: ${{ inputs.settings-file }}
 
-      - name: Dependency-Check
-        uses: dependency-check/Dependency-Check_Action@main
-        with:
-          project: 'Python Image'
-          path: '.'
-          format: 'HTML'
-          out: 'reports'
-          args: >
-            --failOnCVSS 7
-            --enableRetired
-            --suppression suppression.xml
-            --scan .
-            --failOnCVSS 7
+      - name: Install Safety
+        run: pip install safety
 
-      - name: Upload Dependency-Check Report
+      - name: Run Safety Check
+        run: safety check -r requirements.txt --full-report --output reports/safety-report.txt
+
+      - name: Upload Safety Report
         uses: actions/upload-artifact@v4
         with:
-          name: dependency-check-report
-          path: reports/dependency-check-report.html
+          name: safety-report
+          path: reports/safety-report.txt
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
